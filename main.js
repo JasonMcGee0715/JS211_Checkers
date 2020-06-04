@@ -89,7 +89,11 @@ class Board {
     }
   }
   selectChecker(row, column) {
+    // console.log(this.grid[row][column])
     return this.grid[row][column]
+  }
+  killChecker(position) {
+    
   }
 }
 
@@ -103,13 +107,18 @@ class Game {
     this.board.createWhiteCheckers();
     this.board.createBlackCheckers();
   }
-  moveChecker(whichPiece, toWhere) {
-    whichPiece = [row][column]
-    toWhere = [row][column]
-    let checker = selectChecker(whichPiece);
-    // let checker = toWhere;
+  moveChecker(whichPiece, toWhere){
+    // console.log(whichPiece);
+    let startingRow = parseInt(whichPiece[0]);
+    let startingColumn= parseInt(whichPiece[1]);
+    let endingRow = parseInt(toWhere[0]);
+    let endingColumn = parseInt(toWhere[1]);
+    let checker = this.board.selectChecker([startingRow],[startingColumn]);
+    // console.log(checker + "this is my checker");
+    this.board.grid[endingRow][endingColumn] = checker;
+    this.board.grid[startingRow][startingColumn] = null;
+    }
   }
-}
 
 function getPrompt() {
   game.board.viewGrid();
