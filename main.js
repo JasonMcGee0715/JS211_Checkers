@@ -111,10 +111,10 @@ class Game {
     this.board.createBlackCheckers();
   }
   moveChecker(whichPiece, toWhere){
-    let startingRow = parseInt(whichPiece[0]);
-    let startingColumn= parseInt(whichPiece[1]);
-    let endingRow = parseInt(toWhere[0]);
-    let endingColumn = parseInt(toWhere[1]);
+    // let startingRow = parseInt(whichPiece[0]);
+    // let startingColumn= parseInt(whichPiece[1]);
+    // let endingRow = parseInt(toWhere[0]);
+    // let endingColumn = parseInt(toWhere[1]);
     let checker = this.board.selectChecker([startingRow], [startingColumn]);
     console.log(checker);
     this.board.grid[endingRow][endingColumn] = checker;
