@@ -111,13 +111,18 @@ class Game {
     this.board.createBlackCheckers();
   }
   moveChecker(whichPiece, toWhere){
-    // let startingRow = parseInt(whichPiece[0]);
-    // let startingColumn= parseInt(whichPiece[1]);
-    // let endingRow = parseInt(toWhere[0]);
-    // let endingColumn = parseInt(toWhere[1]);
+    //Setting variables in function for the coordinates we are bringing in (where we are, were we 
+    //want to move).
+    let startingRow = parseInt(whichPiece[0]);
+    let startingColumn= parseInt(whichPiece[1]);
+    let endingRow = parseInt(toWhere[0]);
+    let endingColumn = parseInt(toWhere[1]);
+    //Create new variable that (helps) serlects where we are moving from.
     let checker = this.board.selectChecker([startingRow], [startingColumn]);
     console.log(checker);
+    //This sets the checker to where we want to go.
     this.board.grid[endingRow][endingColumn] = checker;
+    //This sets the spot we moved from to null.
     this.board.grid[startingRow][startingColumn] = null;
 
     if (Math.abs(whichPiece[0] - toWhere[0]) == 2) {
