@@ -112,3 +112,17 @@ Simply run `npm run lint`
 
 1. Run `npm start`
 1. To break out of the server, press `ctrl` + `c`
+
+
+
+Next, in your Game class, create a this.moveChecker method that takes two parameters start, end. These two arguments will each contain a row and a column, eg. 50, 41. Inside the method, use your board helper method selectChecker to select the checker at your whichPiece rowcolumncoordinates and set it to a local variable checker. Then set that spot on the grid to null and set the spot at the toWhere rowcolumn coordinate to the checker.
+
+
+const movePiece = (startStack, endStack) => {
+return stacks[endStack].push(stacks[startStack].pop())
+}
+
+
+In your Board class, write a method killChecker that take a single argument position which is a coordinate pair, eg. [0, 5]. In it, use this.selectChecker to grab the checker at the position given. Find the index of that checker in the this.checkers array. then remove it by .splice()ing it out. Then assign the position on this.grid to null. That checker is dead.
+
+In the Game class, in the moveChecker method, after you have moved the checker, check to see if the distance of the start row and the end row is 2 by finding the absolute value of the difference between the rows. If so, which means you must have jumped a checker, find the killPostition by finding the midpoint between the start and end positions. Then killChecker.
